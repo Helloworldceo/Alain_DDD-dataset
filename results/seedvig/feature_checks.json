@@ -1,0 +1,33 @@
+{
+ "corr_our_DE_vs_official_DE_median": 0.908,
+ "spearman_blink_rate_vs_PERCLOS_median": -0.225,
+ "spearman_blink_amplitude_vs_PERCLOS_median": -0.338,
+ "spearman_blink_duration_vs_PERCLOS_median": -0.056,
+ "spearman_blink_time_fraction_vs_PERCLOS_median": -0.16,
+ "spearman_saccade_rate_vs_PERCLOS_median": -0.298,
+ "spearman_slow_eye_movement_fraction_vs_PERCLOS_median": 0.292,
+ "LOPO_SVR official DE(LDS) + EOG36 [COR, RMSE]": [
+  0.717,
+  0.186
+ ],
+ "LOPO_SVR ours raw DE + EOG6 (causal MA5) [COR, RMSE]": [
+  0.643,
+  0.215
+ ],
+ "LOPO_SVR ours clean DE + EOG6 (causal MA5) [COR, RMSE]": [
+  0.695,
+  0.193
+ ],
+ "LOPO_SVR ours clean compact19 (causal MA5) [COR, RMSE]": [
+  0.702,
+  0.17
+ ],
+ "LOPO_SVR ours clean DE only (causal MA5) [COR, RMSE]": [
+  0.575,
+  0.235
+ ],
+ "LOPO_SVR ours clean EOG6 only (causal MA5) [COR, RMSE]": [
+  0.677,
+  0.165
+ ]
+}

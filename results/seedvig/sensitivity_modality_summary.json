@@ -1,0 +1,50 @@
+{
+ "KAN (H=32, G=5, lr=3e-4)": {
+  "cor": 0.7358969271488655,
+  "rmse": 0.16580847721724284,
+  "p_cor_vs_selectedKAN": 0.09579944610595703,
+  "p_rmse_vs_selectedKAN": 0.08879852294921875,
+  "better_cor": 7,
+  "better_rmse": 8
+ },
+ "KAN (H=8, G=5, lr=1e-3)": {
+  "cor": 0.7523284407090269,
+  "rmse": 0.16536103827612741,
+  "p_cor_vs_selectedKAN": 0.41198158264160156,
+  "p_rmse_vs_selectedKAN": 0.2428417205810547,
+  "better_cor": 9,
+  "better_rmse": 9
+ },
+ "LSTM (L=10, lr=1e-3)": {
+  "cor": 0.7282113721909289,
+  "rmse": 0.18530229301679702,
+  "p_cor_vs_selectedKAN": 0.3376598358154297,
+  "p_rmse_vs_selectedKAN": 0.0013742446899414062,
+  "better_cor": 9,
+  "better_rmse": 4
+ },
+ "LSTM (L=20, lr=3e-4)": {
+  "cor": 0.7375567699466908,
+  "rmse": 0.18452287429854983,
+  "p_cor_vs_selectedKAN": 0.6332969665527344,
+  "p_rmse_vs_selectedKAN": 0.014165878295898438,
+  "better_cor": 11,
+  "better_rmse": 7
+ },
+ "KAN, EEG compact (13)": {
+  "cor": 0.5402949632273907,
+  "rmse": 0.2230335140512103,
+  "p_cor_vs_selectedKAN": 3.147125244140625e-05,
+  "p_rmse_vs_selectedKAN": 6.67572021484375e-05,
+  "better_cor": 3,
+  "better_rmse": 3
+ },
+ "KAN, EOG compact (6)": {
+  "cor": 0.6717696363537928,
+  "rmse": 0.1673955704484667,
+  "p_cor_vs_selectedKAN": 0.22898578643798828,
+  "p_rmse_vs_selectedKAN": 0.8381938934326172,
+  "better_cor": 9,
+  "better_rmse": 10
+ }
+}

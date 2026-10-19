@@ -1,0 +1,38 @@
+{
+ "SEED-VIG features (session-smoothed DE) + EOG": {
+  "dim": 121,
+  "causal": false,
+  "cor": 0.7161793578695964,
+  "rmse": 0.1960347655933058
+ },
+ "Filtered only: DE + EOG": {
+  "dim": 91,
+  "causal": true,
+  "cor": 0.6161529815296136,
+  "rmse": 0.22392918577805335
+ },
+ "Cleaned: DE + EOG": {
+  "dim": 91,
+  "causal": true,
+  "cor": 0.6482155174618504,
+  "rmse": 0.205906567058702
+ },
+ "Cleaned: DE only": {
+  "dim": 85,
+  "causal": true,
+  "cor": 0.5440806524564016,
+  "rmse": 0.2344903242275439
+ },
+ "Cleaned: EOG only": {
+  "dim": 6,
+  "causal": true,
+  "cor": 0.673510617065598,
+  "rmse": 0.16671931903955783
+ },
+ "Cleaned: compact set": {
+  "dim": 19,
+  "causal": true,
+  "cor": 0.6601067641565755,
+  "rmse": 0.18142007777452587
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "overall": 0.012757883409087692,
+ "per_feature": {
+  "temporal_DE_delta": 0.022437449556093624,
+  "temporal_DE_theta": 0.012321764864137745,
+  "temporal_DE_alpha": 0.011433952111918213,
+  "temporal_DE_beta": 0.007048695184288405,
+  "temporal_DE_gamma": 0.01151466236211999,
+  "posterior_DE_delta": 0.0295668549905838,
+  "posterior_DE_theta": 0.02464352972827549,
+  "posterior_DE_alpha": 0.023432875975248856,
+  "posterior_DE_beta": 0.02889426957223567,
+  "posterior_DE_gamma": 0.003362927091740652,
+  "log_theta/beta": 0.0005380683346785043,
+  "log_alpha/beta": 0.0004842615012106537,
+  "log_(theta+alpha)/beta": 0.0,
+  "blink_rate": 0.007586763518966908,
+  "blink_amplitude": 0.005676620930858219,
+  "blink_duration": 0.02055421038471886,
+  "blink_time_fraction": 0.01156846919558784,
+  "saccade_rate": 0.013048157115953727,
+  "slow_eye_movement_fraction": 0.008286252354048965
+ }
+}

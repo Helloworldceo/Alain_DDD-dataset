@@ -1,0 +1,248 @@
+{
+ "summary": {
+  "sessions": 23,
+  "sessions_with_bad_channels": 5,
+  "bad_channels_total": 9,
+  "ica_components_removed_total": 25,
+  "windows_flagged": 423,
+  "windows_total": 20355
+ },
+ "sessions": {
+  "10_20151125_noon": {
+   "bad_channels": [],
+   "ica_removed": [],
+   "ica_eog_corr": [],
+   "windows_flagged": 52
+  },
+  "11_20151024_night": {
+   "bad_channels": [],
+   "ica_removed": [
+    3,
+    1
+   ],
+   "ica_eog_corr": [
+    0.352,
+    0.271
+   ],
+   "windows_flagged": 3
+  },
+  "12_20150928_noon": {
+   "bad_channels": [
+    "CP1"
+   ],
+   "ica_removed": [
+    7
+   ],
+   "ica_eog_corr": [
+    0.24
+   ],
+   "windows_flagged": 8
+  },
+  "13_20150929_noon": {
+   "bad_channels": [],
+   "ica_removed": [
+    2
+   ],
+   "ica_eog_corr": [
+    0.518
+   ],
+   "windows_flagged": 7
+  },
+  "14_20151014_night": {
+   "bad_channels": [],
+   "ica_removed": [
+    9,
+    13
+   ],
+   "ica_eog_corr": [
+    0.302,
+    0.212
+   ],
+   "windows_flagged": 13
+  },
+  "15_20151126_night": {
+   "bad_channels": [],
+   "ica_removed": [],
+   "ica_eog_corr": [],
+   "windows_flagged": 1
+  },
+  "16_20151128_night": {
+   "bad_channels": [],
+   "ica_removed": [],
+   "ica_eog_corr": [],
+   "windows_flagged": 2
+  },
+  "17_20150925_noon": {
+   "bad_channels": [],
+   "ica_removed": [
+    0,
+    1
+   ],
+   "ica_eog_corr": [
+    0.669,
+    0.32
+   ],
+   "windows_flagged": 0
+  },
+  "18_20150926_noon": {
+   "bad_channels": [
+    "CP1",
+    "P1"
+   ],
+   "ica_removed": [
+    6
+   ],
+   "ica_eog_corr": [
+    0.221
+   ],
+   "windows_flagged": 18
+  },
+  "19_20151114_noon": {
+   "bad_channels": [],
+   "ica_removed": [
+    2,
+    1
+   ],
+   "ica_eog_corr": [
+    0.341,
+    0.288
+   ],
+   "windows_flagged": 3
+  },
+  "1_20151124_noon_2": {
+   "bad_channels": [],
+   "ica_removed": [],
+   "ica_eog_corr": [],
+   "windows_flagged": 7
+  },
+  "20_20151129_night": {
+   "bad_channels": [],
+   "ica_removed": [],
+   "ica_eog_corr": [],
+   "windows_flagged": 10
+  },
+  "21_20151016_noon": {
+   "bad_channels": [],
+   "ica_removed": [
+    8
+   ],
+   "ica_eog_corr": [
+    0.245
+   ],
+   "windows_flagged": 11
+  },
+  "2_20151106_noon": {
+   "bad_channels": [],
+   "ica_removed": [
+    4,
+    3
+   ],
+   "ica_eog_corr": [
+    0.295,
+    0.29
+   ],
+   "windows_flagged": 13
+  },
+  "3_20151024_noon": {
+   "bad_channels": [],
+   "ica_removed": [
+    7
+   ],
+   "ica_eog_corr": [
+    0.319
+   ],
+   "windows_flagged": 21
+  },
+  "4_20151105_noon": {
+   "bad_channels": [
+    "CP1"
+   ],
+   "ica_removed": [
+    2
+   ],
+   "ica_eog_corr": [
+    0.219
+   ],
+   "windows_flagged": 1
+  },
+  "4_20151107_noon": {
+   "bad_channels": [],
+   "ica_removed": [
+    3
+   ],
+   "ica_eog_corr": [
+    0.202
+   ],
+   "windows_flagged": 1
+  },
+  "5_20141108_noon": {
+   "bad_channels": [],
+   "ica_removed": [
+    3
+   ],
+   "ica_eog_corr": [
+    0.355
+   ],
+   "windows_flagged": 95
+  },
+  "5_20151012_night": {
+   "bad_channels": [],
+   "ica_removed": [
+    1,
+    2
+   ],
+   "ica_eog_corr": [
+    0.377,
+    0.243
+   ],
+   "windows_flagged": 54
+  },
+  "6_20151121_noon": {
+   "bad_channels": [
+    "Pz",
+    "POz",
+    "Oz"
+   ],
+   "ica_removed": [],
+   "ica_eog_corr": [],
+   "windows_flagged": 30
+  },
+  "7_20151015_night": {
+   "bad_channels": [],
+   "ica_removed": [
+    1,
+    3
+   ],
+   "ica_eog_corr": [
+    0.543,
+    0.252
+   ],
+   "windows_flagged": 45
+  },
+  "8_20151022_noon": {
+   "bad_channels": [
+    "POz",
+    "Oz"
+   ],
+   "ica_removed": [
+    7
+   ],
+   "ica_eog_corr": [
+    0.411
+   ],
+   "windows_flagged": 10
+  },
+  "9_20151017_night": {
+   "bad_channels": [],
+   "ica_removed": [
+    7,
+    8
+   ],
+   "ica_eog_corr": [
+    0.608,
+    0.419
+   ],
+   "windows_flagged": 18
+  }
+ }
+}
