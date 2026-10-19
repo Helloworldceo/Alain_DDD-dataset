@@ -1,6 +1,6 @@
-# Person-Independent Driver Drowsiness Estimation from EEG and Forehead EOG
+# CNN–LSTM and Kolmogorov–Arnold Networks for Subject-Independent Driver Drowsiness Estimation from EEG and Forehead EOG
 
-Code for estimating the vigilance of drivers who were **not seen during training**, using EEG and forehead EOG from the public **SEED-VIG** dataset. The pipeline cleans the recordings, extracts features that can be computed in real time, and compares an **LSTM**, a **CNN–LSTM**, a **Kolmogorov–Arnold network (KAN)**, and a **CNN–LSTM with a KAN prediction head** under leave-one-person-out evaluation.
+Code for estimating the vigilance of drivers who were **not seen during training**, using EEG and forehead EOG from the public **SEED-VIG** dataset. The pipeline cleans the recordings, extracts features that can be computed in real time, and compares an **LSTM**, a **CNN–LSTM**, a **Kolmogorov–Arnold network (KAN)**, and a **CNN–LSTM with a KAN prediction head** under leave-one-subject-out evaluation.
 
 **Main findings**
 
@@ -29,7 +29,7 @@ Code for estimating the vigilance of drivers who were **not seen during training
 
 ## 1. Results at a glance
 
-These are leave-one-person-out results, shown as the mean ± standard deviation over 21 people (`results/seedvig/stats_*_clean.json`).
+These are leave-one-subject-out results, shown as the mean ± standard deviation over 21 subjects (`results/seedvig/stats_*_clean.json`).
 
 | Model | Input | PERCLOS COR ↑ | PERCLOS RMSE ↓ | 3-class accuracy ↑ | 3-class macro-F1 ↑ |
 |---|---|---|---|---|---|
@@ -41,7 +41,7 @@ These are leave-one-person-out results, shown as the mean ± standard deviation 
 | MLP | 19 compact features | 0.752 ± 0.159 | 0.166 ± 0.049 | **0.650 ± 0.129** | 0.550 ± 0.103 |
 | **KAN** | **19 compact features** | **0.758 ± 0.169** | **0.163 ± 0.041** | 0.635 ± 0.152 | **0.562 ± 0.118** |
 
-Models are compared with paired Wilcoxon tests across the 21 people, with Holm correction.
+Models are compared with paired Wilcoxon tests across the 21 subjects, with Holm correction.
 
 - **Against the LSTM, the 91-feature models and both CNN–LSTMs,** the KAN has a significantly lower RMSE.
 - **Against the MLP on the same 19 features,** the KAN is statistically indistinguishable, but the KAN's learned functions can be inspected.
@@ -60,7 +60,7 @@ Models are compared with paired Wilcoxon tests across the 21 people, with Holm c
 │   ├── extract_features.py step 4  causal features (DE, EOG, compact set)
 │   ├── check_features.py   step 4  feature checks
 │   ├── plot_cleaning.py    step 4  cleaning figure
-│   ├── splits.py           leave-one-person-out folds
+│   ├── splits.py           leave-one-subject-out folds
 │   ├── models.py           LSTM, CNN–LSTM, B-spline KAN layer, KAN, MLP
 │   ├── train_lib.py        data loading, training, early stopping, metrics
 │   ├── pilot.py            step 5  hyperparameter selection
@@ -132,7 +132,7 @@ flowchart LR
 
 ### Step 1. Labels and official features: `build_features.py`
 
-- Reads the 23 sessions (21 people), each with 885 consecutive 8-second segments, giving 20,355 samples in total.
+- Reads the 23 sessions (21 subjects), each with 885 consecutive 8-second segments, giving 20,355 samples in total.
 - Collects the PERCLOS label of each segment (0 = awake … 1 = drowsy), and assigns 3 classes: awake < 0.35 ≤ tired < 0.7 ≤ drowsy.
 - Also stores the official SEED-VIG features. These are smoothed over the whole session, so they are used only for comparison.
 - **Output:** `features.npz`
@@ -179,9 +179,9 @@ How the EOG features are measured:
 
 ### Step 5. Hyperparameter selection: `pilot.py reg` and `pilot.py cls`
 
-- Uses the first 3 leave-one-person-out folds, with test persons 1, 2 and 3.
-- Each configuration in a pre-stated grid is trained once on the training people and scored on 3 validation people.
-- The configuration with the lowest mean validation loss is fixed for all folds. Test-person scores are never used.
+- Uses the first 3 leave-one-subject-out folds, with test subjects 1, 2 and 3.
+- Each configuration in a pre-stated grid is trained once on the training subjects and scored on 3 validation subjects.
+- The configuration with the lowest mean validation loss is fixed for all folds. Test-subject scores are never used.
 
 | Model | Search range | Selected (PERCLOS / 3 classes) |
 |---|---|---|
@@ -191,7 +191,7 @@ How the EOG features are measured:
 
 - **Output:** `pilot_reg.json`, `pilot_cls.json`
 
-### Step 6. Leave-one-person-out experiments: `run_lopo.py`
+### Step 6. Leave-one-subject-out experiments: `run_lopo.py`
 
 ```bash
 python3 run_lopo.py reg                # PERCLOS regression, cleaned signals
@@ -201,11 +201,11 @@ python3 run_lopo.py reg models=KAN     # a single model
 ```
 
 For each of the 21 folds:
-1. One person is the test set. Persons 4 and 5 recorded two sessions, and both sessions are held out together.
-2. Three other people are validation data for early stopping.
+1. One subject is the test set. Subjects 4 and 5 recorded two sessions, and both sessions are held out together.
+2. Three other subjects are validation data for early stopping.
 3. The rest are training data.
 
-Each neural model is trained with 3 seeds, using Adam, batch size 128, at most 60 epochs, and early stopping with a patience of 10. The test predictions are averaged over the seeds. Scores are computed per test person. The script resumes automatically if it is interrupted.
+Each neural model is trained with 3 seeds, using Adam, batch size 128, at most 60 epochs, and early stopping with a patience of 10. The test predictions are averaged over the seeds. Scores are computed per test subject. The script resumes automatically if it is interrupted.
 
 - **Output:** `lopo_<task>_<signals>.json`, `lopo_<task>_<signals>_pred.npz`
 
@@ -216,16 +216,16 @@ Each neural model is trained with 3 seeds, using Adam, batch size 128, at most 6
 | `feature_sets_full.py` | compares feature sets with the SVR on the same splits | `feature_sets_full.json` |
 | `sensitivity.py` | runs the runner-up KAN and LSTM configurations on all 21 folds | `sensitivity_reg.json` |
 | `modality.py` | trains the KAN on the EEG part (13) and the EOG part (6) of the compact set | `modality_reg.json` |
-| `kan_interpret.py` | trains the KAN on all people and plots each feature's effect on the predicted PERCLOS | `kan_interpretation.json`, `fig_kan_effects.png` |
+| `kan_interpret.py` | trains the KAN on all subjects and plots each feature's effect on the predicted PERCLOS | `kan_interpretation.json`, `fig_kan_effects.png` |
 
 ### Step 8. Statistics and figures
 
 | Script | What it does | Output |
 |---|---|---|
-| `analyze_lopo.py` | per-model mean ± SD, paired Wilcoxon tests with Holm correction and rank-biserial effect sizes, per-person figure | `stats_*_clean.json`, `fig_lopo_per_person_clean.png` |
+| `analyze_lopo.py` | per-model mean ± SD, paired Wilcoxon tests with Holm correction and rank-biserial effect sizes, per-subject figure | `stats_*_clean.json`, `fig_lopo_per_person_clean.png` |
 | `compare_cleaning.py` | cleaned vs. filtered-only, for every model | `cleaning_ablation.json` |
 | `per_class.py` | per-class F1 and confusion matrices for the 3-class task | `per_class_cls.json` |
-| `rescore_cls.py` | recomputes 3-class scores from saved predictions, with macro-F1 over the classes present for each person | updates `lopo_cls_clean.json` |
+| `rescore_cls.py` | recomputes 3-class scores from saved predictions, with macro-F1 over the classes present for each subject | updates `lopo_cls_clean.json` |
 
 ---
 
@@ -248,21 +248,21 @@ The B-spline KAN layer is implemented directly in PyTorch, in `models.py` under 
 
 ## 7. Evaluation protocol
 
-![Leave-one-person-out protocol](docs/images/protocol.png)
+![Leave-one-subject-out protocol](docs/images/protocol.png)
 
 **Metrics:**
 - **PERCLOS regression:** Pearson correlation (COR) and RMSE.
-- **3 classes:** accuracy and macro-F1, the latter computed over the classes present in each person's data.
+- **3 classes:** accuracy and macro-F1, the latter computed over the classes present in each subject's data.
 
-**Statistics:** each person is an independent test case. Models are compared with the Wilcoxon signed-rank test across the 21 people, Holm-corrected over all model pairs, with the rank-biserial effect size.
+**Statistics:** each subject is an independent test case. Models are compared with the Wilcoxon signed-rank test across the 21 subjects, Holm-corrected over all model pairs, with the rank-biserial effect size.
 
 ---
 
 ## 8. Figures
 
-**Score of every test person** (points), with box plots and means (blue bars):
+**Score of every test subject** (points), with box plots and means (blue bars):
 
-![Per-person results](figures/seedvig/fig_lopo_per_person_clean.png)
+![Per-subject results](figures/seedvig/fig_lopo_per_person_clean.png)
 
 **Learned KAN effects.** These show how each compact feature moves the predicted PERCLOS when the other features are held at their mean:
 
