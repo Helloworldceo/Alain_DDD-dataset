@@ -60,6 +60,7 @@ Models are compared with paired Wilcoxon tests across the 21 subjects, with Holm
 │   ├── extract_features.py step 4  causal features (DE, EOG, compact set)
 │   ├── check_features.py   step 4  feature checks
 │   ├── plot_cleaning.py    step 4  cleaning figure
+│   ├── plot_montage.py     EEG montage figure
 │   ├── splits.py           leave-one-subject-out folds
 │   ├── models.py           LSTM, CNN–LSTM, B-spline KAN layer, KAN, MLP
 │   ├── train_lib.py        data loading, training, early stopping, metrics
@@ -105,6 +106,10 @@ data/SEED-VIG/
 ├── perclos_labels/        PERCLOS label for every 8-s segment
 └── ...
 ```
+
+The 17 EEG channels used, grouped by region as in the compact features (`scripts/seedvig/plot_montage.py`):
+
+<img src="figures/seedvig/fig_seedvig_montage.png" alt="SEED-VIG EEG montage" width="420">
 
 ---
 

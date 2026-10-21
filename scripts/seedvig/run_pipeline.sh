@@ -13,6 +13,7 @@ echo "== 3. Artifact cleaning";                      $PY preprocess_clean.py
 echo "== 4. Causal feature extraction";              $PY extract_features.py
 $PY check_features.py
 $PY plot_cleaning.py
+$PY plot_montage.py
 echo "== 5. Pilot: hyperparameter selection";        $PY pilot.py reg;  $PY pilot.py cls
 echo "== 6. Leave-one-person-out experiments";       $PY run_lopo.py reg; $PY run_lopo.py cls
 $PY run_lopo.py reg signals=raw                      # cleaning ablation
